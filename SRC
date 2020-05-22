@@ -1,0 +1,133 @@
+/**SilajevCellPhone.java
+ *  Asks user to input the ranges of four cities using a method It then takes the constant coordinates of the cities
+ *  to calculate the distance and determine whether cellphone service is available.  
+ * @Evgenia Silajev
+ * @version 1.0 (Last Updated: Mar 26, 2020)
+ **/
+
+package silajevCellPhone;
+import java.util.Scanner;
+public class SilajevCellPhone {
+
+	public static void main(String[] args) {
+		
+		// Ask user to input the range for cities 1 through 4
+		int range1= getRange(1);
+	    System.out.println("Range for city 1: " + range1+ "Km");
+	    
+	    int range3= getRange(1);
+	    System.out.println("Range for city 2: " + range3 + "Km");
+	   
+	    int range5= getRange(1);
+	    System.out.println("Range for city 3: " + range5+ "Km");
+	 
+	    int range7= getRange(1);
+	    System.out.println("Range for city 4: " + range7+ "Km");
+	    
+	    System.out.println();
+	    
+	    //Adds the range between each adjacent city
+	    int sum = range1 + range3;
+	    int sum1=range3 + range5;
+	    int sum2 = range5 + range7;
+	    
+	    double dis1=distance1(0);
+	    double dis2=distance2(0);
+	    double dis3=distance3(0);
+	    
+	    //Determines whether there will be overlaps in the range between the cities
+	    if (dis1< sum) {
+	    	System.out.println("Cellphone service will remain available between city 1 and 2");
+	    	
+	    }
+	    else {
+	    	System.out.println("Cellphone service will become unavailable between city 1 and 2");
+	    }
+	    if (dis2< sum1) {
+	    	System.out.println("Cellphone service will remain available between city 2 and 3");
+	    	
+	    }
+	    else {
+	    	System.out.println("Cellphone service will become unavailable between city 2 and 3");
+	    }
+	    if (dis3< sum2) {
+	    	System.out.println("Cellphone service will remain available between city 3 and 4");
+	    	
+	    }
+	    else {
+	    	System.out.println("Cellphone service will become unavailable between city 3 and 4");
+	    }
+	  
+	}
+	// X and Y coordinates for cities 
+	 public static final int city1x = 100;
+	 public static final int city1y = 360;
+	 public static final int city2x = 250;
+	 public static final int city2y = 360;
+	 public static final int city3x = 340;
+	 public static final int city3y = 250;
+	 public static final int city4x = 230;
+	 public static final int city4y = 140;
+	
+	 
+	 
+	 
+	 /** getRange 
+		 * Public scope,asks the user to input the range for each city. Takes in an int value and
+		 * returns the range as inputed by the user.
+		 * 		@param x 
+		 *      any int value
+		 * 		@return range
+		 *      The range of each city
+		 */
+	 public static int getRange (int x) {
+		 System.out.println("Enter the max phone connecitvity for each city (Km)");
+		 Scanner sc = new Scanner(System.in);
+		    int range= sc. nextInt();
+		    
+
+			return range;
+	 }
+	 
+	 /** distance1 
+	 * Calculates the distance between city 1 and 2 using the distance
+	 * formula. Takes in a double value and returns the the distance.
+	 * 		@param y 
+	 *      any double value
+	 * 		@return dis
+	 *      The distance between first two cities
+	 */
+	 public static double distance1 (double y) {
+		
+		 double dis =Math. sqrt(Math.pow(( city2x- city1x),2)+Math.pow(( city2y- city1y),2));
+		return dis;
+	 }
+	
+	 /** distance2 
+		 * Calculates the distance between city 2 and 3 using the distance
+		 * formula. Takes in a double value and returns the the distance.
+		 * 		@param z 
+		 *      any double value
+		 * 		@return dis2
+		 *      The distance between the two cities
+		 */
+	 public static double distance2 (double z) {
+			
+		 double dis2 =Math. sqrt(Math.pow(( city3x- city2x),2)+Math.pow(( city3y- city2y),2));
+		return dis2;
+	 }
+	 
+	 /** distance3 
+		 * Calculates the distance between city 3 and 4 using the distance
+		 * formula. Takes in a double value and returns the the distance.
+		 * 		@param a
+		 *      any double value
+		 * 		@return dis3
+		 *      The distance between the two cities
+		 */
+	 public static double distance3 (double a) {
+			
+		 double dis3 =Math. sqrt(Math.pow(( city4x- city3x),2)+Math.pow(( city4y- city3y),2));
+		return dis3;
+	 }
+}
